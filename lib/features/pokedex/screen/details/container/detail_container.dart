@@ -33,6 +33,7 @@ class DetailContainer extends StatelessWidget {
         if (snapshot.connectionState == ConnectionState.done && snapshot.hasData) {
           return DetailPage(
             name: arguments.name,
+            list: snapshot.data!,
           );
         }
 

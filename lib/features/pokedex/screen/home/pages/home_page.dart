@@ -20,7 +20,10 @@ class HomePage extends StatelessWidget {
         itemBuilder: (context, index) {
           return ListTile(
             title: Text(list[index].name),
-            onTap: onItemTap('/details', DetailArguments(name: list[index].name)),
+            onTap: () => onItemTap(
+              '/details',
+              DetailArguments(name: list[index].name),
+            ),
           );
         },
       ),
