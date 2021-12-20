@@ -17,7 +17,7 @@ class HomePage extends StatelessWidget {
   Widget build(BuildContext context) {
     return Scaffold(
       body: Padding(
-        padding: const EdgeInsets.symmetric(horizontal: 16.0, vertical: 4.0),
+        padding: const EdgeInsets.symmetric(horizontal: 12.0, vertical: 4),
         child: GridView.count(
           crossAxisCount: 2,
           crossAxisSpacing: 12,
@@ -29,18 +29,6 @@ class HomePage extends StatelessWidget {
               .toList(),
         ),
       ),
-      // body: ListView.builder(
-      //   itemCount: list.length,
-      //   itemBuilder: (context, index) {
-      //     return ListTile(
-      //       title: Text(list[index].name),
-      //       onTap: () => onItemTap(
-      //         '/details',
-      //         DetailArguments(name: list[index].name),
-      //       ),
-      //     );
-      //   },
-      // ),
     );
   }
 }

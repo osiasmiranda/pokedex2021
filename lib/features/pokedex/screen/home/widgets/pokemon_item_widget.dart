@@ -16,10 +16,10 @@ class PokemonItemWidget extends StatelessWidget {
     return Container(
       decoration: BoxDecoration(
         color: pokemon.baseColor!.withOpacity(0.8),
-        borderRadius: BorderRadius.circular(16),
+        borderRadius: BorderRadius.circular(10),
       ),
       child: Padding(
-        padding: const EdgeInsets.all(16.0),
+        padding: const EdgeInsets.all(8.0),
         child: Column(
           crossAxisAlignment: CrossAxisAlignment.start,
           mainAxisAlignment: MainAxisAlignment.center,
@@ -32,17 +32,19 @@ class PokemonItemWidget extends StatelessWidget {
                     pokemon.name,
                     style: const TextStyle(
                       color: Colors.white,
-                      fontWeight: FontWeight.w600,
-                      fontSize: 16,
+                      fontWeight: FontWeight.bold,
+                      fontSize: 12,
                     ),
                   ),
                 ),
-                Text(
-                  '#$pokemon.num',
-                  style: TextStyle(
-                    color: Colors.black.withOpacity(0.4),
-                    fontWeight: FontWeight.w600,
-                    fontSize: 14,
+                Flexible(
+                  child: Text(
+                    "#${pokemon.num}",
+                    style: TextStyle(
+                      color: Colors.black.withOpacity(0.4),
+                      fontWeight: FontWeight.bold,
+                      fontSize: 12,
+                    ),
                   ),
                 ),
               ],

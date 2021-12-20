@@ -12,7 +12,7 @@ class TypeWidget extends StatelessWidget {
       child: Container(
         decoration: BoxDecoration(
           color: Colors.white.withOpacity(.2),
-          borderRadius: BorderRadius.circular(16),
+          borderRadius: BorderRadius.circular(8),
         ),
         child: Padding(
           padding: const EdgeInsets.all(6.0),
