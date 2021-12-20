@@ -17,10 +17,10 @@ class HomePage extends StatelessWidget {
   Widget build(BuildContext context) {
     return Scaffold(
       body: Padding(
-        padding: const EdgeInsets.symmetric(horizontal: 8.0),
+        padding: const EdgeInsets.symmetric(horizontal: 16.0, vertical: 4.0),
         child: GridView.count(
           crossAxisCount: 2,
-          crossAxisSpacing: 10,
+          crossAxisSpacing: 12,
           mainAxisSpacing: 12,
           children: list
               .map((e) => PokemonItemWidget(
