@@ -16,10 +16,12 @@ class DetailContainer extends StatelessWidget {
     Key? key,
     required this.repository,
     required this.arguments,
+    required this.onBack,
   }) : super(key: key);
 
   final IPokemonRepository repository;
   final DetailArguments arguments;
+  final VoidCallback onBack;
 
   @override
   Widget build(BuildContext context) {
@@ -34,6 +36,7 @@ class DetailContainer extends StatelessWidget {
           return DetailPage(
             pokemon: arguments.pokemon,
             list: snapshot.data!,
+            onBack: onBack,
           );
         }
 

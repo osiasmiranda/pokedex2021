@@ -1,44 +1,34 @@
 import 'package:flutter/material.dart';
 import 'package:pokedex2021/common/models/pokemon.dart';
 
+import 'widgets/detail_app_bar_widget.dart';
+import 'widgets/detail_list_widget.dart';
+
 class DetailPage extends StatelessWidget {
   const DetailPage({
     Key? key,
     required this.pokemon,
     required this.list,
+    required this.onBack,
   }) : super(key: key);
   final Pokemon pokemon;
+  final VoidCallback onBack;
   final List<Pokemon> list;
 
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-        appBar: AppBar(
-          title: Text(pokemon.name),
-        ),
-        body: Padding(
-          padding: const EdgeInsets.symmetric(horizontal: 24),
-          child: Column(
-            children: [
-              SizedBox(
-                height: 400,
-                child: Padding(
-                  padding: const EdgeInsets.only(top: 32.0),
-                  child: ListView(
-                    scrollDirection: Axis.horizontal,
-                    children: list
-                        .map(
-                          (e) => Padding(
-                            padding: const EdgeInsets.all(8.0),
-                            child: Text(e.name),
-                          ),
-                        )
-                        .toList(),
-                  ),
-                ),
-              )
-            ],
+      body: Stack(
+        children: [
+          DetailAppBarWidget(
+            pokemon: pokemon,
+            onBack: onBack,
           ),
-        ));
+          DetailListWidget(
+            pokemon: pokemon,
+          ),
+        ],
+      ),
+    );
   }
 }
