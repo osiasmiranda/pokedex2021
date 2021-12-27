@@ -15,8 +15,8 @@ class DetailAppBarWidget extends StatelessWidget {
       child: AppBar(
         elevation: 0,
         backgroundColor: pokemon.baseColor,
-        centerTitle: true,
-        title: Text(pokemon.name),
+        // centerTitle: true,
+        // title: Text(pokemon.name),
         leading: IconButton(
           onPressed: onBack,
           icon: Icon(
