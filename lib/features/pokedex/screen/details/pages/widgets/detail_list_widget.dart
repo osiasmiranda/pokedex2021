@@ -20,7 +20,7 @@ class DetailListWidget extends StatelessWidget {
       top: 80,
       left: 0,
       right: 0,
-      height: 280,
+      height: 250,
       child: Container(
         color: pokemon.baseColor,
         child: Column(
@@ -62,14 +62,32 @@ class DetailListWidget extends StatelessWidget {
                   onChangePokemon(list[index]);
                 },
                 controller: controller,
-                children: list
-                    .map((e) => Image.network(
-                          e.image,
-                          fit: BoxFit.contain,
-                          height: 120,
-                          width: 120,
-                        ))
-                    .toList(),
+                children: list.map((e) {
+                  bool diff = e.name != pokemon.name;
+                  return AnimatedOpacity(
+                    duration: Duration(milliseconds: 300),
+                    opacity: diff ? 0.3 : 1.0,
+                    child: TweenAnimationBuilder<double>(
+                        duration: Duration(milliseconds: 300),
+                        curve: Curves.easeIn,
+                        tween: Tween<double>(
+                          begin: diff ? 300 : 100,
+                          end: diff ? 100 : 300,
+                        ),
+                        builder: (context, value, child) {
+                          return Center(
+                            child: Image.network(
+                              e.image,
+                              fit: BoxFit.contain,
+                              width: value,
+                              // height: 120,
+                              // width: 120,
+                              color: diff ? Colors.grey[800] : null,
+                            ),
+                          );
+                        }),
+                  );
+                }).toList(),
               ),
             )
           ],
