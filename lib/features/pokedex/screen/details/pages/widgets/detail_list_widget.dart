@@ -68,7 +68,7 @@ class DetailListWidget extends StatelessWidget {
                     duration: Duration(milliseconds: 300),
                     opacity: diff ? 0.3 : 1.0,
                     child: TweenAnimationBuilder<double>(
-                        duration: Duration(milliseconds: 300),
+                        duration: Duration(milliseconds: 200),
                         curve: Curves.easeIn,
                         tween: Tween<double>(
                           begin: diff ? 300 : 100,
