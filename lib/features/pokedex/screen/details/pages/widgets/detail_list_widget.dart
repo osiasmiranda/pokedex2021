@@ -65,7 +65,7 @@ class DetailListWidget extends StatelessWidget {
                 children: list.map((e) {
                   bool diff = e.name != pokemon.name;
                   return AnimatedOpacity(
-                    duration: Duration(milliseconds: 300),
+                    duration: Duration(milliseconds: 200),
                     opacity: diff ? 0.3 : 1.0,
                     child: TweenAnimationBuilder<double>(
                         duration: Duration(milliseconds: 200),
