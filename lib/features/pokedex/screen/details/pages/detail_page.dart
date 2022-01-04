@@ -4,8 +4,8 @@ import 'package:pokedex2021/common/models/pokemon.dart';
 import 'widgets/detail_app_bar_widget.dart';
 import 'widgets/detail_list_widget.dart';
 
-class DetailPage extends StatelessWidget {
-  const DetailPage({
+class DetailPage extends StatefulWidget {
+  DetailPage({
     Key? key,
     required this.pokemon,
     required this.list,
@@ -20,22 +20,66 @@ class DetailPage extends StatelessWidget {
   final ValueChanged<Pokemon> onChangePokemon;
 
   @override
+  State<DetailPage> createState() => _DetailPageState();
+}
+
+class _DetailPageState extends State<DetailPage> {
+  late ScrollController scrollcontroller = ScrollController();
+  bool isOntop = false;
+
+  @override
   Widget build(BuildContext context) {
     return Scaffold(
-      body: CustomScrollView(
-        physics: ClampingScrollPhysics(),
-        slivers: [
-          DetailAppBarWidget(
-            pokemon: pokemon,
-            onBack: onBack,
-          ),
-          DetailListWidget(
-            controller: controller,
-            pokemon: pokemon,
-            list: list,
-            onChangePokemon: onChangePokemon,
-          ),
-        ],
+      body: NotificationListener(
+        onNotification: (notification) {
+          setState(() {
+            if (scrollcontroller.position.pixels > 27) {
+              isOntop = false;
+            } else if (scrollcontroller.position.pixels <= 26) {
+              isOntop = true;
+            }
+          });
+
+          return false;
+        },
+        child: CustomScrollView(
+          physics: ClampingScrollPhysics(),
+          controller: scrollcontroller,
+          slivers: [
+            DetailAppBarWidget(
+              pokemon: widget.pokemon,
+              onBack: widget.onBack,
+              isOntop: isOntop,
+            ),
+            DetailListWidget(
+              controller: widget.controller,
+              pokemon: widget.pokemon,
+              list: widget.list,
+              onChangePokemon: widget.onChangePokemon,
+            ),
+            SliverToBoxAdapter(
+              child: SizedBox(
+                height: MediaQuery.of(context).size.height,
+                child: Stack(
+                  children: [
+                    Container(
+                      color: widget.pokemon.baseColor,
+                    ),
+                    Container(
+                      decoration: BoxDecoration(
+                        color: Colors.white,
+                        borderRadius: BorderRadius.only(
+                          topLeft: Radius.circular(24),
+                          topRight: Radius.circular(24),
+                        ),
+                      ),
+                    ),
+                  ],
+                ),
+              ),
+            ),
+          ],
+        ),
       ),
     );
   }
