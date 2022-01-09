@@ -67,10 +67,9 @@ class _DetailPageState extends State<DetailPage> {
                     ),
                     Container(
                       decoration: BoxDecoration(
-                        color: Colors.white,
                         borderRadius: BorderRadius.only(
-                          topLeft: Radius.circular(24),
-                          topRight: Radius.circular(24),
+                          topLeft: Radius.circular(25),
+                          topRight: Radius.circular(25),
                         ),
                       ),
                     ),
